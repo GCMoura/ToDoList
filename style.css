@@ -8,6 +8,10 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
+#app form {
+    margin-top: 25px;
+}
+
 #left {
     display: flex;
     flex-direction: column;
@@ -22,6 +26,7 @@ body {
     align-items: center;
     height: 100vh;
     font-size: 1.5rem;
+    margin-top: 25px;
 }
 
 .input-group {
@@ -35,4 +40,22 @@ body {
 
 #button-addon2 {
     font-size: 1.5rem;
+}
+
+.btnDelete {
+    padding: 2px;
+    margin-left: 25px;
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        width: 300px;
+    }
+    .form-control {
+        height: 60px;
+        font-size: 1.0rem;
+    }
+    #button-addon2 {
+        font-size: 1.0rem;
+    }
 }
