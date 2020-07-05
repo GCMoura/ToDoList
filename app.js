@@ -3,11 +3,9 @@ var right = document.querySelector('#right ul')
 var button = document.querySelector('.input-group-append button')
 var activities = []
 
+input.focus()
+
 var activities = JSON.parse(localStorage.getItem('list_activities')) || []
-
-button.onclick = addActivity;
-
-buttonEmail.onclick = sendEmail;
 
 function render() {
 
@@ -19,14 +17,15 @@ function render() {
 
         listElement.appendChild(textActivity)
 
+        var pos = activities.indexOf(activity)
+
         var buttonDelete = document.createElement('button')
         buttonDelete.className = 'btn btn-danger btnDelete'
 
-        var pos = activities.indexOf(activity)
-        buttonDelete.setAttribute('onclick', 'deleteActivity(' + pos + ')')
+        var textButtonDelete = document.createTextNode('Excluir')
+        buttonDelete.appendChild(textButtonDelete)
 
-        var textButton = document.createTextNode('Excluir')
-        buttonDelete.appendChild(textButton)
+        buttonDelete.addEventListener('click', function(){deleteActivity(pos)})
 
         listElement.appendChild(buttonDelete)
 
@@ -35,6 +34,8 @@ function render() {
 }
 
 render()
+
+button.onclick = addActivity;
 
 function addActivity() {
     var activity = input.value
@@ -53,6 +54,8 @@ function deleteActivity(pos) {
 
     render()
     saveStorage()
+
+    input.focus()
 }
 
 function saveStorage() {
